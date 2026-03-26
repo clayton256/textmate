@@ -6,11 +6,7 @@ You can [download TextMate from here](https://macromates.com/download).
 
 ## Feedback
 
-You can use [the TextMate mailing list](https://lists.macromates.com/listinfo/textmate) or [#textmate][] IRC channel on [freenode.net][] for questions, comments, and bug reports.
-
-You can also [contact MacroMates](https://macromates.com/support).
-
-Before you submit a bug report please read the [writing bug reports](https://github.com/textmate/textmate/wiki/writing-bug-reports) instructions.
+Use [GitHub Issues](https://github.com/tectiv3/textmate/issues) for bug reports and feature requests.
 
 ## Screenshot
 
@@ -58,25 +54,32 @@ Before you submit a bug report please read the [writing bug reports](https://git
 
 # Building
 
-## Setup
+## Requirements
 
-To build TextMate, you need the following:
-
+ * macOS 14.0 (Sonoma) or later
+ * Xcode (full install, not just Command Line Tools — `ibtool` and `actool` are required).
+   Make sure the active developer directory points to Xcode: `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`
  * [ninja][]            — build system similar to `make`
- * [cmake][]            — meta build system
+ * [cmake][] ≥ 3.21     — meta build system
 
-All this can be installed using [Homebrew][]:
+All dependencies can be installed using [Homebrew][]:
 
 ```sh
 brew install ninja cmake
 ```
 
-After installing dependencies, make sure you have a full checkout and then build:
+## Setup
 
 ```sh
-git clone https://github.com/tectiv3/textmate.git
+git clone --recursive https://github.com/tectiv3/textmate.git
 cd textmate
 make run
+```
+
+If you already cloned without `--recursive`, fetch the submodules separately:
+
+```sh
+git submodule update --init --recursive
 ```
 
 ## Build Commands
@@ -308,8 +311,4 @@ TextMate is a trademark of Allan Odgaard.
 
 [ninja]:         https://ninja-build.org/
 [cmake]:         https://cmake.org/
-[MacPorts]:      http://www.macports.org/
-[Homebrew]:      http://brew.sh/
-[NinjaBundle]:   https://github.com/textmate/ninja.tmbundle
-[#textmate]:     irc://irc.freenode.net/#textmate
-[freenode.net]:  http://freenode.net/
+[Homebrew]:      https://brew.sh/
