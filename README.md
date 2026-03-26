@@ -121,52 +121,45 @@ TextMate has built-in Language Server Protocol support for diagnostics and compl
 
 ### PHP (intelephense)
 
-```sh
-brew install node
-npm install -g @anthropics/intelephense
-```
-
 ```
 # .tm_properties
 [ *.php ]
-lspCommand = "/opt/homebrew/bin/intelephense" --stdio
-lspInitOptions = {"licenceKey":"YOUR-KEY-HERE","clearCache":true}
+lspCommand = "intelephense --stdio"
+lspInitOptions = '{"licenceKey":"YOUR-KEY-HERE","clearCache":true}'
 ```
 
 ### Go (gopls)
 
-```sh
-go install golang.org/x/tools/gopls@latest
-```
-
 ```
 # .tm_properties
 [ *.go ]
-lspCommand = "$GOPATH/bin/gopls"
+lspCommand = gopls
 ```
 
 ### C/C++/Objective-C (clangd)
 
-```sh
-brew install llvm
-```
-
 ```
 # .tm_properties
 [ *.{c,cc,cpp,h,hpp,m,mm} ]
-lspCommand = "/opt/homebrew/opt/llvm/bin/clangd"
+lspCommand = clangd
 ```
 
-### Python (pylsp)
-
-```sh
-brew install python-lsp-server
-```
+### Python (pyright)
 
 ```
 # .tm_properties
 [ *.py ]
-lspCommand = "/opt/homebrew/bin/pylsp"
+lspCommand = "pyright-langserver --stdio"
+```
+
+### Python (pylsp)
+
+Alternative Python server with plugin ecosystem (ruff, mypy, black):
+
+```
+# .tm_properties
+[ *.py ]
+lspCommand = pylsp
 ```
 
 To disable specific plugins (e.g. mypy if it can't find your project's dependencies):
@@ -174,7 +167,7 @@ To disable specific plugins (e.g. mypy if it can't find your project's dependenc
 ```
 # .tm_properties
 [ *.py ]
-lspCommand = "/opt/homebrew/bin/pylsp"
+lspCommand = pylsp
 lspInitOptions = '{"pylsp": {"plugins": {"pylsp_mypy": {"enabled": false}}}}'
 ```
 
@@ -182,18 +175,45 @@ If you need pylsp to resolve project-specific packages, install it inside your p
 
 ### Vue/TypeScript (Volar 2.x)
 
-Volar 2.0+ uses Hybrid Mode, requiring `typescript-language-server` for script support. Install locally:
+Volar 2.0+ uses Hybrid Mode with `typescript-language-server` for script support:
 
-```sh
-npm install -D typescript typescript-language-server @vue/language-server @vue/typescript-plugin
 ```
-
-```properties
 # .tm_properties
 [ *.{vue,ts,tsx,js,jsx} ]
 lspCommand = "$TM_PROJECT_DIRECTORY/node_modules/.bin/typescript-language-server --stdio"
-# Point to the plugin location inside node_modules (relative to project root)
 lspInitOptions = '{ "plugins": [{ "name": "@vue/typescript-plugin", "location": "./node_modules/@vue/language-server", "languages": ["vue"] }] }'
+```
+
+### Rust (rust-analyzer)
+
+```
+# .tm_properties
+[ *.rs ]
+lspCommand = rust-analyzer
+```
+
+### Lua (lua-language-server)
+
+```
+# .tm_properties
+[ *.lua ]
+lspCommand = lua-language-server
+```
+
+### Bash (bash-language-server)
+
+```
+# .tm_properties
+[ *.{sh,bash,zsh} ]
+lspCommand = "bash-language-server start"
+```
+
+### Ruby (ruby-lsp)
+
+```
+# .tm_properties
+[ *.rb ]
+lspCommand = ruby-lsp
 ```
 
 ### Settings
