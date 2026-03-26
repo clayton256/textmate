@@ -157,6 +157,29 @@ brew install llvm
 lspCommand = "/opt/homebrew/opt/llvm/bin/clangd"
 ```
 
+### Python (pylsp)
+
+```sh
+brew install python-lsp-server
+```
+
+```
+# .tm_properties
+[ *.py ]
+lspCommand = "/opt/homebrew/bin/pylsp"
+```
+
+To disable specific plugins (e.g. mypy if it can't find your project's dependencies):
+
+```
+# .tm_properties
+[ *.py ]
+lspCommand = "/opt/homebrew/bin/pylsp"
+lspInitOptions = '{"pylsp": {"plugins": {"pylsp_mypy": {"enabled": false}}}}'
+```
+
+If you need pylsp to resolve project-specific packages, install it inside your project's virtualenv instead of using the global one.
+
 ### Vue/TypeScript (Volar 2.x)
 
 Volar 2.0+ uses Hybrid Mode, requiring `typescript-language-server` for script support. Install locally:
