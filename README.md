@@ -216,6 +216,16 @@ lspCommand = "bash-language-server start"
 lspCommand = ruby-lsp
 ```
 
+### Swift (sourcekit-lsp)
+
+Requires Xcode. Project must have a `Package.swift` or `compile_commands.json`.
+
+```
+# .tm_properties
+[ *.swift ]
+lspCommand = "xcrun sourcekit-lsp"
+```
+
 ### Settings
 
 | Property | Description |
@@ -229,6 +239,10 @@ lspCommand = ruby-lsp
 | `formatOnSave` | Set to `true` to format before saving — uses `formatCommand` if set, else LSP (default: `false`) |
 
 Press **Opt+Tab** to trigger LSP completions. Diagnostics (errors, warnings) appear automatically in the gutter.
+
+### Debugging
+
+Open the LSP log panel via **View → LSP Log** (or click the LSP status indicator in the bottom bar). Shows all JSON-RPC traffic, server stderr, errors, and lifecycle events. Use the filter field to narrow by server name or message content.
 
 ### Formatting
 
