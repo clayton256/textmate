@@ -15,7 +15,8 @@
       "Bash(bash build.sh)",
       "Bash(gh pr:*)",
       "Bash(gh search:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(make)"
     ]
   }
 }
