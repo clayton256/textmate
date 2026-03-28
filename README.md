@@ -247,6 +247,41 @@ Press **Opt+Tab** to trigger LSP completions. Diagnostics (errors, warnings) app
 
 Open the LSP log panel via **View → LSP Log** (or click the LSP status indicator in the bottom bar). Shows all JSON-RPC traffic, server stderr, errors, and lifecycle events. Use the filter field to narrow by server name or message content.
 
+## GitHub Copilot
+
+TextMate supports GitHub Copilot inline completions (ghost text). Requires a GitHub Copilot subscription.
+
+### Installation
+
+Install `copilot-language-server` (the modern native binary):
+
+```sh
+npm install -g @github/copilot-language-server
+```
+
+Or via nix:
+
+```nix
+environment.systemPackages = [ pkgs.copilot-language-server ];
+```
+
+TextMate auto-detects the binary from `$PATH`. To override, set `copilotCommand` in `.tm_properties`:
+
+```
+copilotCommand = /path/to/copilot-language-server
+```
+
+### Settings
+
+| Property | Description |
+|----------|-------------|
+| `copilotCommand` | Path to copilot-language-server binary (overrides auto-detect) |
+| `copilotEnabled` | Set to `false` to disable Copilot for matching files (default: `true`) |
+
+### Usage
+
+Copilot suggestions appear automatically as ghost text while typing. Press **Tab** to accept, **Esc** to dismiss. Sign in via **TextMate → Copilot → Sign In** on first use.
+
 ### Formatting
 
 Format the current document via **Text → Format Code**. Enable format-on-save per file type.
