@@ -282,6 +282,19 @@ copilotCommand = /path/to/copilot-language-server
 
 Copilot suggestions appear automatically as ghost text while typing. Press **Tab** to accept, **Esc** to dismiss. Sign in via **TextMate → Copilot → Sign In** on first use.
 
+### Disabling
+
+Set `copilotEnabled = false` in `.tm_properties`. Like all TextMate settings, it can be scoped globally, per-project, or per-file-type:
+
+```
+# ~/.tm_properties — disable everywhere
+copilotEnabled = false
+
+# project .tm_properties — disable for one file type
+[ *.md ]
+copilotEnabled = false
+```
+
 ### Formatting
 
 Format the current document via **Text → Format Code**. Enable format-on-save per file type.
