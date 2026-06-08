@@ -135,7 +135,6 @@ add_subdirectory(Frameworks/scm)
 add_subdirectory(Frameworks/file)
 add_subdirectory(Frameworks/command)
 add_subdirectory(Frameworks/layout)
-add_subdirectory(Frameworks/license)
 add_subdirectory(Frameworks/lsp)
 
 # === GUI frameworks ===

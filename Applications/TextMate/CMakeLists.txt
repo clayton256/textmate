@@ -7,7 +7,7 @@ target_link_libraries(TextMate PRIVATE
   BundleEditor BundleMenu BundlesManager CommitWindow DocumentWindow
   Find HTMLOutputWindow MenuBuilder OakAppKit OakCommand OakFilterList OakFoundation
   OakSystem OakTextView Preferences authorization bundles cf command
-  crash document io kvdb license ns plist regexp scm settings text theme
+  crash document io kvdb ns plist regexp scm settings text theme
   ${TEXTMATE_DEBUG_LIBS}
 )
 
