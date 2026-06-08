@@ -6,6 +6,8 @@
   --articleColor:    #000;
   --borderColor:     rgba(0, 0, 0, 0.5);
   --linkColor:       #7f00a4;
+  --latestBorder:    rgba(127, 0, 164, 0.65);
+  --latestShadow:    rgba(127, 0, 164, 0.18);
   --codeBg:          rgba(0, 0, 0, 0.1);
   --kbdBg:           rgba(0, 0, 0, 0.1);
   --kbdBorder:       rgba(0, 0, 0, 0.35);
@@ -24,6 +26,8 @@
     --articleColor:    #e0e0e0;
     --borderColor:     rgba(255, 255, 255, 0.2);
     --linkColor:       #c084fc;
+    --latestBorder:    rgba(192, 132, 252, 0.75);
+    --latestShadow:    rgba(192, 132, 252, 0.24);
     --codeBg:          rgba(255, 255, 255, 0.08);
     --kbdBg:           rgba(255, 255, 255, 0.1);
     --kbdBorder:       rgba(255, 255, 255, 0.25);
@@ -81,6 +85,10 @@ article {
 
 article:last-child {
   margin-bottom: 0; }
+
+article.latest {
+  border-color: var(--latestBorder);
+  box-shadow: 0 0 0 2px var(--latestShadow); }
 
 a, a:visited, a:hover {
   color: var(--linkColor);
