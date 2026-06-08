@@ -70,6 +70,12 @@ else
   run('git', 'commit', '--amend', '--no-edit')
 end
 
+run('ruby', 'bin/generate_contributions.rb', '--revision', 'HEAD^')
+run('git', 'add', 'Applications/TextMate/about/Contributions.html')
+
+_stdout, _stderr, diff_status = Open3.capture3('git', 'diff', '--cached', '--quiet')
+run('git', 'commit', '--amend', '--no-edit') unless diff_status.success?
+
 run('git', 'tag', '-a', next_tag, '-m', "TextMate #{next_tag.delete_prefix('v')}")
 
 puts "Prepared release #{next_tag}"
