@@ -250,6 +250,7 @@ Open the LSP log panel via **View → LSP Log** (or click the LSP status indicat
 ## GitHub Copilot
 
 TextMate supports GitHub Copilot inline completions (ghost text). Requires a GitHub Copilot subscription.
+Copilot is disabled by default.
 
 ### Installation
 
@@ -265,9 +266,11 @@ Or via nix:
 environment.systemPackages = [ pkgs.copilot-language-server ];
 ```
 
-TextMate auto-detects the binary from `$PATH`. To override, set `copilotCommand` in `.tm_properties`:
+Enable Copilot from the status bar menu, or set `copilotEnabled = true` in `.tm_properties`.
+When enabled, TextMate auto-detects the binary from `$PATH`. To override, set `copilotCommand`:
 
 ```
+copilotEnabled = true
 copilotCommand = /path/to/copilot-language-server
 ```
 
@@ -276,23 +279,23 @@ copilotCommand = /path/to/copilot-language-server
 | Property | Description |
 |----------|-------------|
 | `copilotCommand` | Path to copilot-language-server binary (overrides auto-detect) |
-| `copilotEnabled` | Set to `false` to disable Copilot for matching files (default: `true`) |
+| `copilotEnabled` | Set to `true` to enable Copilot for matching files (default: `false`) |
 
 ### Usage
 
-Copilot suggestions appear automatically as ghost text while typing. Press **Tab** to accept, **Esc** to dismiss. Sign in via **TextMate → Copilot → Sign In** on first use.
+When enabled and signed in, Copilot suggestions appear automatically as ghost text while typing. Press **Tab** to accept, **Esc** to dismiss.
 
-### Disabling
+### Enabling
 
-Set `copilotEnabled = false` in `.tm_properties`. Like all TextMate settings, it can be scoped globally, per-project, or per-file-type:
+Set `copilotEnabled = true` in `.tm_properties`. Like all TextMate settings, it can be scoped globally, per-project, or per-file-type:
 
 ```
-# ~/.tm_properties — disable everywhere
-copilotEnabled = false
+# ~/.tm_properties — enable everywhere
+copilotEnabled = true
 
-# project .tm_properties — disable for one file type
+# project .tm_properties — enable for one file type
 [ *.md ]
-copilotEnabled = false
+copilotEnabled = true
 ```
 
 ### Formatting
