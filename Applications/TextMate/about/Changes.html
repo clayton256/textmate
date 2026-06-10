@@ -12,6 +12,19 @@
 <h1 id="changes">Changes</h1>
 
 <article class="latest">
+<h2 id="2026-06-10v2.18.0">2026-06-10 (v2.18.0)</h2>
+
+<ul>
+<li>Migrate HTML output window from legacy WebView to WKWebView</li>
+<li>Fix file:// URL rewriting to preserve txmt:// links</li>
+<li>Apply file:// URL rewriting to setContent: refresh path</li>
+<li>Migrate tooltip from legacy WebView to WKWebView</li>
+<li>Fix compilation warning</li>
+<li>See <a href="https://github.com/tectiv3/textmate/compare/v2.17.1...v2.18.0">all changes since v2.17.1</a></li>
+</ul>
+</article>
+
+<article>
 <h2 id="2026-06-09v2.17.1">2026-06-09 (v2.17.1)</h2>
 
 <ul>
@@ -442,6 +455,150 @@
 <li>Filter empty toasts and suppress LSP Log-level showMessage</li>
 <li>Refactor version handling and bundle identifier in CMake files</li>
 <li>See <a href="https://github.com/tectiv3/textmate/compare/v2.5...v2.5.1">all changes since v2.5</a></li>
+</ul>
+</article>
+
+<article>
+<h2 id="2026-03-14v2.5">2026-03-14 (v2.5)</h2>
+
+<ul>
+<li>Add CLAUDE.md with project analysis and development guide (#1)</li>
+<li>Init serena</li>
+<li>Add CMake migration design spec (rev 2)</li>
+<li>Update CMake migration spec to minimal-first approach (rev 3)</li>
+<li>Add CMake migration implementation plan</li>
+<li>Add root CMakeLists.txt, CMake helpers, presets, and update .gitignore</li>
+<li>Add CMakeLists.txt for vendor libraries</li>
+<li>Add CMakeLists.txt for leaf frameworks</li>
+<li>Add CMakeLists.txt for low-level frameworks</li>
+<li>Add CMakeLists.txt for core engine frameworks</li>
+<li>Add CMakeLists.txt for service frameworks</li>
+<li>Add CMakeLists.txt for GUI frameworks</li>
+<li>Add CMakeLists.txt for top-level frameworks, CLI apps, and special bundles</li>
+<li>Add CMakeLists.txt for plugins and TextMate main app</li>
+<li>Fix build errors from initial CMake migration</li>
+<li>Bump macOS target to 14.0, use -dev bundle ID and app support path, fix YEAR in copyright</li>
+<li>Compile xib files to nib and embed in app bundle</li>
+<li>Revert app support path to shared TextMate dir (bundle ID is sufficient for coexistence)</li>
+<li>Refactor hardcoded app support paths to use oak::application_t::support()</li>
+<li>Add ad-hoc codesigning for embedded plugins</li>
+<li>Add OakSystem dependency to tm_query for application support path API</li>
+<li>Fix plugin Info.plist variable expansion for unique bundle identifiers</li>
+<li>Add -ObjC linker flag to force-load ObjC categories from static libraries</li>
+<li>Bundle framework resources (icons, images, plists) into app</li>
+<li>Add missing framework resources: tab bar images, DocumentTypes subdirectory</li>
+<li>Update upstream status in CLAUDE.md</li>
+<li>Fix cast of non Objective-C pointer in shared_ptr</li>
+<li>Silence vfork deprecated on macOS Monterey until migration to posix_spawn</li>
+<li>Fix Ruby scripts</li>
+<li>Fix broken hyperlink to Ragel</li>
+<li>Fix &quot;toggleing&quot; typo in Preferences</li>
+<li>Avoid clang 15 crash by using correct array size</li>
+<li>Fix incorrect number of seconds in a day</li>
+<li>Add attr.filebrowser when file browser pane has focus</li>
+<li>Fix file browser and document view backgrounds (#9)</li>
+<li>Drop macOS &lt; 14 compatibility (#12)</li>
+<li>Modernize ERB usage to eliminate Ruby 3.x deprecation warnings (#13)</li>
+<li>Fix gutter color (#14)</li>
+<li>Center tabs (#18)</li>
+<li>Update CMakeLists globs for .cc-to-.mm renames from tagliala cherry-picks</li>
+<li>Revert &quot;Center tabs (#18)&quot;</li>
+<li>Add Makefile</li>
+<li>Merge branch &#39;feature/cmake-migration&#39; into develop</li>
+<li>Incorporate dialog plugins into repo (no longer submodules)</li>
+<li>Remove old rave build system, gen_html, and multimarkdown dependency</li>
+<li>Replace google-sparsehash with std::unordered_map</li>
+<li>Replace ragel with hand-written ASCII plist parser</li>
+<li>Remove boost dependency, replace with std::variant and zlib crc32</li>
+<li>Update README with current build instructions and removed dependencies</li>
+<li>Remove unused SyntaxMate application</li>
+<li>Fix build warnings</li>
+<li>Clean up more warnings</li>
+<li>Log uncaught C++ exceptions and update plist conversion functions</li>
+<li>Remove self-update system, network framework, and related dead code</li>
+<li>vendor: add nlohmann/json 3.11.3 single header for LSP support</li>
+<li>lsp: add LSPClient interface for PoC</li>
+<li>lsp: implement LSPClient with JSON-RPC framing and intelephense lifecycle</li>
+<li>lsp: hook LSPClient into OakDocumentView, triggered by TM_ENABLE_IS</li>
+<li>lsp: add homebrew to NSTask PATH so node-based servers work</li>
+<li>docs: add LSP Phase 1 design spec</li>
+<li>docs: update LSP Phase 1 spec with critic feedback and mark system findings</li>
+<li>lsp: create Frameworks/lsp/ framework, move LSPClient from OakTextView</li>
+<li>lsp: refactor LSPClient with delegate pattern, server request handling, document sync</li>
+<li>lsp: wire LSPManager into OakDocumentView with document sync notifications</li>
+<li>lsp: shutdown all LSP servers on app termination</li>
+<li>lsp: fix languageId detection and diagnostic dict key mismatch</li>
+<li>docs: add LSP Phase 2 completion design spec with three strategies</li>
+<li>docs: add implementation plans for three LSP completion strategies</li>
+<li>Fix crash in bundle editor</li>
+<li>Fix regex buffer overread and key equivalent display in split view</li>
+<li>Update memory</li>
+<li>Add LSP completion support to OakTextView and editor classes</li>
+<li>Add LSP completion request/response with rich suggestion dicts and client-side filtering</li>
+<li>Add Opt+Tab LSP completion UI with NSMenu popup</li>
+<li>Fix completion insertion race and remove dead LSP code from editor</li>
+<li>Revert &quot;Fix completion insertion race and remove dead LSP code from editor&quot;</li>
+<li>Remove unused LSP completion code from editor layer</li>
+<li>Merge feature/lsp-client: native LSP support with diagnostics and Opt+Tab completions</li>
+<li>Add LSP setup examples to README for PHP, Go, C++, and Vue</li>
+<li>Remove crash reporter</li>
+<li>feat: add OakSwiftUI SPM package with minimal framework</li>
+<li>chore: add .gitignore for OakSwiftUI, remove build artifacts</li>
+<li>feat: add OakSwiftUI build script</li>
+<li>feat: add swift-build targets to Makefile for OakSwiftUI</li>
+<li>feat: integrate OakSwiftUI as optional dependency in CMake build</li>
+<li>docs: note optional Swift dependency for OakSwiftUI</li>
+<li>feat: add OakHostingView and OakThemeEnvironment</li>
+<li>feat: add FuzzyMatcher for completion filtering</li>
+<li>feat: add OakCompletionItem bridge class</li>
+<li>feat: add CompletionViewModel with filtering and navigation</li>
+<li>feat: add CompletionListView and CompletionRowView SwiftUI views</li>
+<li>feat: add OakCompletionPopup bridge class with keyboard handling</li>
+<li>feat: add OakInfoTooltip with popover-based rich content display</li>
+<li>feat: add OakFloatingPanel with child window management</li>
+<li>Add LSP Go to Definition via Cmd+Opt+D</li>
+<li>test: add bridge class initialization and property tests</li>
+<li>fix: address code review issues in OakSwiftUI</li>
+<li>Add Cmd+Click go to definition with pointing hand cursor</li>
+<li>Merge branch &#39;feature/add-ui-swiftui-framework&#39; into develop</li>
+<li>Add oakswiftui usage guide</li>
+<li>Wire OakSwiftUI CompletionPopup into LSP completion flow</li>
+<li>Remove conditional guards, drop old NSMenu completion, link OakSwiftUI directly</li>
+<li>Improve completion popup: add background, kind icons, and pass detail from LSP</li>
+<li>Enable LSP snippet completions with tab-stop parameter navigation</li>
+<li>Add LSP hover (textDocument/hover) with mouse and keyboard triggers</li>
+<li>Update LSPClient to accept initialization options and modify client creation logic</li>
+<li>Add LSP Find References design spec</li>
+<li>Add LSP Find References (textDocument/references) with SwiftUI panel</li>
+<li>Fix hover tooltip showing tall empty space above content</li>
+<li>Add formatting design doc</li>
+<li>Implement LSP Notifications and Debug Panel</li>
+<li>Enhance LSP UI: Auto-scroll Log Panel and Initialized Toast</li>
+<li>Add formatting capabilities and request methods to LSPClient</li>
+<li>Add formatting routing and capability queries to LSPManager</li>
+<li>Add LSP formatting with manual trigger and format-on-save</li>
+<li>Merge branch &#39;feature/lsp-formatting&#39; into develop</li>
+<li>See <a href="https://github.com/tectiv3/textmate/compare/v2.1.1-undead...v2.5">all changes since v2.1.1-undead</a></li>
+</ul>
+</article>
+
+<article>
+<h2 id="2026-05-28v2.1.1-undead">2026-05-28 (v2.1.1-undead)</h2>
+
+<ul>
+<li>Software Update: feed from GitHub Releases, verify via Apple signature</li>
+<li>Software Update: drop the Prereleases channel until a beta stream exists</li>
+<li>Eliminate api.textmate.org: neutralize crash upload, remove bl/updater</li>
+<li>Merge pull request #9 from textmatelives/software-update-option-b</li>
+<li>Info.plist: declare CFBundleSupportedPlatforms = [MacOSX]</li>
+<li>Merge pull request #10 from textmatelives/fix/issue-8-supported-platforms</li>
+<li>configure: derive dependency prefix from Homebrew instead of hardcoding /usr/local</li>
+<li>Merge pull request #11 from textmatelives/fix/configure-homebrew-prefix</li>
+<li>docs: add RELEASING.md describing how releases are cut</li>
+<li>README: use screenshot_undead.png; retain the original as a historical artifact</li>
+<li>CHANGELOG: add v2.1.1-undead release notes</li>
+<li>Merge pull request #12 from textmatelives/release-prep</li>
+<li>See <a href="https://github.com/tectiv3/textmate/compare/v2.1.0-undead...v2.1.1-undead">all changes since v2.1.0-undead</a></li>
 </ul>
 </article>
 
