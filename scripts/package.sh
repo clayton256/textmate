@@ -91,6 +91,21 @@ gh release create "$GIT_TAG" "$TGZ_PATH" \
   --title "$APP_NAME $VERSION" \
   --generate-notes
 
+# ── Update Homebrew tap ──────────────────────────────────────────────
+HOMEBREW_TAP="${HOMEBREW_TAP:-$HOME/code/homebrew-textmate}"
+CASK_FILE="$HOMEBREW_TAP/Casks/textmate.rb"
+
+if [ -f "$CASK_FILE" ]; then
+  echo "==> Updating Homebrew cask"
+  sed -i '' "s/version \".*\"/version \"$VERSION\"/" "$CASK_FILE"
+  sed -i '' "s/sha256 \".*\"/sha256 \"$TGZ_SHA\"/" "$CASK_FILE"
+  git -C "$HOMEBREW_TAP" add Casks/textmate.rb
+  git -C "$HOMEBREW_TAP" commit -m "Update TextMate to $VERSION"
+  git -C "$HOMEBREW_TAP" push
+else
+  echo "WARNING: cask not found at $CASK_FILE — skipping tap update"
+fi
+
 # ── Done ─────────────────────────────────────────────────────────────
 echo ""
 echo "Done! Signed & notarized: $TGZ_PATH"

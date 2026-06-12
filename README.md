@@ -2,7 +2,15 @@
 
 ## Download
 
-You can [download TextMate from here](https://macromates.com/download).
+Install this fork via Homebrew:
+
+```sh
+brew install --cask tectiv3/textmate/textmate
+```
+
+Or download a signed and notarized build from the [releases page](https://github.com/tectiv3/textmate/releases).
+
+The official (upstream) TextMate is available [from macromates.com](https://macromates.com/download).
 
 ## Feedback
 
